@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from 'react'
+import { ReactNode, useState } from 'react'
+import { createContext } from 'use-context-selector'
 import { v4 as uuuidV4 } from 'uuid'
 
 interface Task {
@@ -42,7 +43,7 @@ function TasksProvider({ children }: TasksProviderProps) {
 
   function CheckTaskHasCompleted(taskId: string) {
     const updatedTask = tasks.map((task) => ({ ...task }))
-    console.log(updatedTask)
+
     const searchTask = updatedTask.find((task) => task.id === taskId)
 
     if (!searchTask) {

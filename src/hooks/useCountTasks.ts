@@ -1,8 +1,11 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { TasksContext } from '../contexts/TasksContext'
 
 export function useCountTasks() {
-  const { tasks } = useContext(TasksContext)
+  const tasks = useContextSelector(TasksContext, (context) => {
+    return context.tasks
+  })
 
   const countTasks = useMemo(() => {
     return tasks.reduce(

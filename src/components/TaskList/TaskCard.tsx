@@ -1,7 +1,7 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
 
 import { Trash, Check } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { TasksContext } from '../../contexts/TasksContext'
 
 interface taskCardProps {
@@ -13,7 +13,12 @@ interface taskCardProps {
 }
 
 export function TaskCard({ task }: taskCardProps) {
-  const { CheckTaskHasCompleted, DeleteTask } = useContext(TasksContext)
+  const { CheckTaskHasCompleted, DeleteTask } = useContextSelector(
+    TasksContext,
+    (context) => {
+      return context
+    },
+  )
 
   function handleCkeckTaskHasCompleted() {
     CheckTaskHasCompleted(task.id)

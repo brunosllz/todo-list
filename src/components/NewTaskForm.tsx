@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { useForm } from 'react-hook-form'
 import { TasksContext } from '../contexts/TasksContext'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,7 +13,9 @@ const createNewtaskSchemaValidate = z.object({
 type createNewTaskType = z.infer<typeof createNewtaskSchemaValidate>
 
 export function NewTaskForm() {
-  const { createNewTask } = useContext(TasksContext)
+  const createNewTask = useContextSelector(TasksContext, (context) => {
+    return context.createNewTask
+  })
   const { handleSubmit, register, reset } = useForm<createNewTaskType>({
     resolver: zodResolver(createNewtaskSchemaValidate),
   })
