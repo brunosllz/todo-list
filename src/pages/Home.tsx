@@ -1,13 +1,14 @@
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { TasksContext } from '../contexts/TasksContext'
+import { useCountTasks } from '../hooks/useCountTasks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
-import { TaskCard } from '../components/TaskCard'
+import { TaskList } from '../components/TaskList'
 
-import Logo from '../assets/logo.svg'
 import { PlusCircle } from 'phosphor-react'
-import { useContext } from 'react'
-import { TasksContext } from '../contexts/TasksContext'
+import Logo from '../assets/logo.svg'
 
 const createNewtaskSchemaValidate = z.object({
   taskDescription: z.string(),
@@ -17,6 +18,7 @@ type createNewTaskType = z.infer<typeof createNewtaskSchemaValidate>
 
 export function Home() {
   const { tasks, createNewTask } = useContext(TasksContext)
+  const countTasks = useCountTasks()
 
   const { handleSubmit, register, reset } = useForm<createNewTaskType>({
     resolver: zodResolver(createNewtaskSchemaValidate),
@@ -26,22 +28,6 @@ export function Home() {
     createNewTask(data)
     reset()
   }
-
-  const countTasks = tasks.reduce(
-    (acc, task) => {
-      task && acc.total++
-
-      if (task.isCompleted === true) {
-        acc.completedtasktotal += 1
-      }
-
-      return acc
-    },
-    {
-      total: 0,
-      completedtasktotal: 0,
-    },
-  )
 
   return (
     <div className="flex flex-col w-full h-screen">
@@ -86,12 +72,13 @@ export function Home() {
               </span>
             </div>
           </div>
-
-          <ul className="flex flex-col gap-3 mt-6">
-            {tasks.map((task) => {
-              return <TaskCard key={task.id} task={task} />
-            })}
-          </ul>
+          {tasks ? (
+            <>
+              <h1>Hello</h1>
+            </>
+          ) : (
+            <TaskList />
+          )}
         </div>
       </main>
     </div>
