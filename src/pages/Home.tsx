@@ -21,7 +21,7 @@ export function Home() {
         <img src={Logo} alt="" width={126} height={48} />
       </header>
 
-      <main className="flex flex-col w-full max-w-[736px] mx-auto -mt-[27px]">
+      <main className="flex flex-col w-full max-w-[752px] mx-auto -mt-[27px] px-4">
         <NewTaskForm />
 
         <div className="flex flex-col mt-16">

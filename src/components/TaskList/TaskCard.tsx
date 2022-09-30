@@ -28,7 +28,7 @@ export function TaskCard({ task }: taskCardProps) {
       <Checkbox.Root
         value={task.id}
         onCheckedChange={handleCkeckTaskHasCompleted}
-        className="w-5 h-5 rounded-full border-2 border-blue-500 [&[data-state='checked']]:border-purple-700 flex items-center justify-center [&[data-state='checked']]:bg-purple-700 transition-colors"
+        className="w-5 h-5 rounded-full border-2 border-blue-500 hover:border-blue-700 [&[data-state='checked']]:border-purple-700 [&[data-state='checked']]:hover:border-purple-500 flex items-center justify-center [&[data-state='checked']]:bg-purple-700 [&[data-state='checked']]:hover:bg-purple-500 transition-colors"
       >
         <Checkbox.Indicator className="text-gray-100">
           <Check size={12} weight="bold" />
@@ -36,7 +36,10 @@ export function TaskCard({ task }: taskCardProps) {
       </Checkbox.Root>
 
       <p className="text-sm flex-1">{task.description}</p>
-      <button onClick={handleDeleteTask} className="flex mb-auto text-gray-300">
+      <button
+        onClick={handleDeleteTask}
+        className="flex mb-auto text-gray-300 hover:text-red-500 transition-colors hover:bg-gray-400 items-center justify-center p-1 rounded"
+      >
         <Trash size={24} />
       </button>
     </li>
