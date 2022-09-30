@@ -7,7 +7,7 @@ import z from 'zod'
 
 import { TaskList } from '../components/TaskList'
 
-import { PlusCircle } from 'phosphor-react'
+import { PlusCircle, ClipboardText } from 'phosphor-react'
 import Logo from '../assets/logo.svg'
 
 const createNewtaskSchemaValidate = z.object({
@@ -28,6 +28,7 @@ export function Home() {
     createNewTask(data)
     reset()
   }
+  const hasTask = tasks.length > 0
 
   return (
     <div className="flex flex-col w-full h-screen">
@@ -72,12 +73,16 @@ export function Home() {
               </span>
             </div>
           </div>
-          {tasks ? (
-            <>
-              <h1>Hello</h1>
-            </>
-          ) : (
+          {hasTask ? (
             <TaskList />
+          ) : (
+            <div className="flex flex-col items-center gap-4 border-t-[1px] border-gray-400 mt-6 py-16 text-gray-300">
+              <ClipboardText size={56} color="#333333" />
+              <div>
+                <strong>Você ainda não tem tarefas cadastradas</strong>
+                <p>Crie tarefas e organize seus itens a fazer</p>
+              </div>
+            </div>
           )}
         </div>
       </main>
