@@ -1,33 +1,18 @@
 import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
+
 import { TasksContext } from '../contexts/TasksContext'
 import { useCountTasks } from '../hooks/useCountTasks'
-import { zodResolver } from '@hookform/resolvers/zod'
-import z from 'zod'
 
 import { TaskList } from '../components/TaskList'
 
-import { PlusCircle, ClipboardText } from 'phosphor-react'
+import { ClipboardText } from 'phosphor-react'
 import Logo from '../assets/logo.svg'
-
-const createNewtaskSchemaValidate = z.object({
-  taskDescription: z.string(),
-})
-
-type createNewTaskType = z.infer<typeof createNewtaskSchemaValidate>
+import { NewTaskForm } from '../components/NewTaskForm'
 
 export function Home() {
-  const { tasks, createNewTask } = useContext(TasksContext)
+  const { tasks } = useContext(TasksContext)
   const countTasks = useCountTasks()
 
-  const { handleSubmit, register, reset } = useForm<createNewTaskType>({
-    resolver: zodResolver(createNewtaskSchemaValidate),
-  })
-
-  function handleCreateNewTask(data: createNewTaskType) {
-    createNewTask(data)
-    reset()
-  }
   const hasTask = tasks.length > 0
 
   return (
@@ -37,21 +22,7 @@ export function Home() {
       </header>
 
       <main className="flex flex-col w-full max-w-[736px] mx-auto -mt-[27px]">
-        <form
-          onSubmit={handleSubmit(handleCreateNewTask)}
-          className="flex gap-2"
-        >
-          <input
-            placeholder="Adicione uma nova tarefa"
-            className="flex-1 h-14 rounded-lg p-4 bg-gray-500 b-0 placeholder:text-gray-300"
-            {...register('taskDescription')}
-          />
-
-          <button className="w-[90px] flex gap-2 items-center justify-center bg-blue-700 rounded-lg b-0 font-bold text-sm">
-            Criar
-            <PlusCircle size={24} />
-          </button>
-        </form>
+        <NewTaskForm />
 
         <div className="flex flex-col mt-16">
           <div className="flex items-center justify-between">
