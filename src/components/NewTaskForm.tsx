@@ -31,7 +31,7 @@ export function NewTaskForm() {
         {...register('taskDescription')}
       />
 
-      <button className="w-[90px] flex gap-2 items-center justify-center bg-blue-700 rounded-lg b-0 font-bold text-sm">
+      <button className="w-[90px] flex gap-2 items-center justify-center bg-blue-700 hover:bg-blue-500 rounded-lg b-0 font-bold text-sm transition-colors">
         Criar
         <PlusCircle size={24} />
       </button>
