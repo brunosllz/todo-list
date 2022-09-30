@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useCallback, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { v4 as uuuidV4 } from 'uuid'
 
@@ -28,37 +28,46 @@ interface TasksProviderProps {
 function TasksProvider({ children }: TasksProviderProps) {
   const [tasks, setTasks] = useState<Task[]>([])
 
-  function createNewTask({ taskDescription }: CreateNewTaskType) {
-    setTasks((state) => {
-      return [
-        {
-          id: uuuidV4(),
-          description: taskDescription,
-          isCompleted: false,
-        },
-        ...state,
-      ]
-    })
-  }
+  const createNewTask = useCallback(
+    ({ taskDescription }: CreateNewTaskType) => {
+      setTasks((state) => {
+        return [
+          {
+            id: uuuidV4(),
+            description: taskDescription,
+            isCompleted: false,
+          },
+          ...state,
+        ]
+      })
+    },
+    [],
+  )
 
-  function CheckTaskHasCompleted(taskId: string) {
-    const updatedTask = tasks.map((task) => ({ ...task }))
+  const CheckTaskHasCompleted = useCallback(
+    (taskId: string) => {
+      const updatedTask = tasks.map((task) => ({ ...task }))
 
-    const searchTask = updatedTask.find((task) => task.id === taskId)
+      const searchTask = updatedTask.find((task) => task.id === taskId)
 
-    if (!searchTask) {
-      return
-    }
+      if (!searchTask) {
+        return
+      }
 
-    searchTask.isCompleted = !searchTask.isCompleted
-    setTasks(updatedTask)
-  }
+      searchTask.isCompleted = !searchTask.isCompleted
+      setTasks(updatedTask)
+    },
+    [tasks],
+  )
 
-  function DeleteTask(taskId: string) {
-    const deleteTask = tasks.filter((task) => task.id !== taskId)
+  const DeleteTask = useCallback(
+    (taskId: string) => {
+      const deleteTask = tasks.filter((task) => task.id !== taskId)
 
-    setTasks(deleteTask)
-  }
+      setTasks(deleteTask)
+    },
+    [tasks],
+  )
 
   return (
     <TasksContext.Provider
