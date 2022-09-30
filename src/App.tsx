@@ -1,5 +1,10 @@
+import { TasksProvider } from './contexts/TasksContext'
 import { Home } from './pages/Home'
 
 export function App() {
-  return <Home />
+  return (
+    <TasksProvider>
+      <Home />
+    </TasksProvider>
+  )
 }
