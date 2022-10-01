@@ -65,4 +65,5 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## [](https://github.com/brunosllz/todo-list#--milhas-a-mais) 🚀 Milhas a mais 
 
 - [x] Validação do formulário
+- [x] Salvar tarefas no local storage
 - [x] Responsividade da aplicação
