@@ -43,7 +43,7 @@ export function TaskCard({ task }: taskCardProps) {
       </Checkbox.Root>
 
       <p
-        className={classNames('text-sm flex-1 ', {
+        className={classNames('text-sm flex-1 truncate', {
           'text-gray-300 line-through': task.isCompleted,
         })}
       >

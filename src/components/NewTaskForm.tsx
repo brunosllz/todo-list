@@ -26,14 +26,17 @@ export function NewTaskForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(handleCreateNewTask)} className="flex gap-2">
+    <form
+      onSubmit={handleSubmit(handleCreateNewTask)}
+      className="flex gap-2 flex-col mobile-m:flex-row"
+    >
       <input
         placeholder="Adicione uma nova tarefa"
         className="flex-1 h-14 rounded-lg p-4 bg-gray-500 b-0 placeholder:text-gray-300"
         {...register('taskDescription')}
       />
 
-      <button className="w-[90px] flex gap-2 items-center justify-center bg-blue-700 hover:bg-blue-500 rounded-lg b-0 font-bold text-sm transition-colors">
+      <button className="w-full mobile-m:w-[90px] h-14 flex gap-2 items-center justify-center bg-blue-700 hover:bg-blue-500 rounded-lg b-0 font-bold text-sm transition-colors">
         Criar
         <PlusCircle size={24} />
       </button>

@@ -24,7 +24,11 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      screens: {
+        'mobile-m': '375px',
+      },
+    },
   },
   plugins: [],
 }

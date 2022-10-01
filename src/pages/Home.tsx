@@ -51,11 +51,15 @@ export function Home() {
           {hasTask ? (
             <TaskList />
           ) : (
-            <div className="flex flex-col items-center gap-4 border-t-[1px] border-gray-400 mt-6 py-16 text-gray-300">
+            <div className="flex flex-col items-center justify-center gap-4 border-t-[1px] border-gray-400 mt-6 py-16 text-gray-300">
               <ClipboardText size={56} color="#333333" />
-              <div>
-                <strong>Você ainda não tem tarefas cadastradas</strong>
-                <p>Crie tarefas e organize seus itens a fazer</p>
+              <div className="flex flex-col items-center justify-center">
+                <strong className="text-center text-sm mobile-m:text-base">
+                  Você ainda não tem tarefas cadastradas
+                </strong>
+                <p className="text-center text-sm mobile-m:text-base">
+                  Crie tarefas e organize seus itens a fazer
+                </p>
               </div>
             </div>
           )}
