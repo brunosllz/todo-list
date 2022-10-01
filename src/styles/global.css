@@ -7,8 +7,9 @@
 }
 
 body {
-  @apply bg-gray-600 text-gray-100;
-  -webkit-font-smoothing: antialiased
+  @apply bg-gray-600 text-gray-100 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-full scrollbar-track-gray-600 scroll-smooth ;
+  -webkit-font-smoothing: antialiased;
+  
 }
 
 input, button, textarea {
