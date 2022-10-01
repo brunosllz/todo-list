@@ -34,6 +34,7 @@ export function TaskCard({ task }: taskCardProps) {
     <li className="flex items-center p-4 bg-gray-500 border-[1px] border-gray-400 rounded-lg gap-4">
       <Checkbox.Root
         value={task.id}
+        defaultChecked={task.isCompleted}
         onCheckedChange={handleCkeckTaskHasCompleted}
         className="w-5 h-5 rounded-full border-2 border-blue-500 hover:border-blue-700 [&[data-state='checked']]:border-purple-700 [&[data-state='checked']]:hover:border-purple-500 flex items-center justify-center [&[data-state='checked']]:bg-purple-700 [&[data-state='checked']]:hover:bg-purple-500 transition-colors"
       >

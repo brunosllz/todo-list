@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { v4 as uuuidV4 } from 'uuid'
 
@@ -26,7 +26,17 @@ interface TasksProviderProps {
 }
 
 function TasksProvider({ children }: TasksProviderProps) {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const storedTasksState = localStorage.getItem(
+      '@todo-list:tasks-state-1.0.0',
+    )
+
+    if (storedTasksState) {
+      return JSON.parse(storedTasksState)
+    }
+
+    return []
+  })
 
   const createNewTask = useCallback(
     ({ taskDescription }: CreateNewTaskType) => {
@@ -73,6 +83,12 @@ function TasksProvider({ children }: TasksProviderProps) {
     },
     [tasks],
   )
+
+  useEffect(() => {
+    const tasksJSON = JSON.stringify(tasks)
+
+    localStorage.setItem('@todo-list:tasks-state-1.0.0', tasksJSON)
+  }, [tasks])
 
   return (
     <TasksContext.Provider
