@@ -13,7 +13,7 @@
 
 <br/>
 
-![](https://github.com/brunosllz/NLW-Esports-web/blob/main/src/assets/cover.png)
+![](https://github.com/brunosllz/todo-list/blob/main/src/assets/cover.png)
 
 ## [](https://github.com/brunosllz/todo-list#--sobre-o-projeto) 💻 Sobre o projeto
 
