@@ -54,8 +54,13 @@ function TasksProvider({ children }: TasksProviderProps) {
         return
       }
 
-      searchTask.isCompleted = !searchTask.isCompleted
+      Object.assign(searchTask, {
+        isCompleted: !searchTask.isCompleted,
+      })
+
       setTasks(updatedTask)
+
+      console.log(updatedTask)
     },
     [tasks],
   )
