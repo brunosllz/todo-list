@@ -1,8 +1,10 @@
+import { useContextSelector } from 'use-context-selector'
+import { TasksContext } from '../../contexts/TasksContext'
+import classNames from 'classnames'
+
 import * as Checkbox from '@radix-ui/react-checkbox'
 
 import { Trash, Check } from 'phosphor-react'
-import { useContextSelector } from 'use-context-selector'
-import { TasksContext } from '../../contexts/TasksContext'
 
 interface taskCardProps {
   task: {
@@ -40,7 +42,13 @@ export function TaskCard({ task }: taskCardProps) {
         </Checkbox.Indicator>
       </Checkbox.Root>
 
-      <p className="text-sm flex-1">{task.description}</p>
+      <p
+        className={classNames('text-sm flex-1 ', {
+          'text-gray-300 line-through': task.isCompleted,
+        })}
+      >
+        {task.description}
+      </p>
       <button
         onClick={handleDeleteTask}
         className="flex mb-auto text-gray-300 hover:text-red-500 transition-colors hover:bg-gray-400 items-center justify-center p-1 rounded"

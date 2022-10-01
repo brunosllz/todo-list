@@ -4,10 +4,10 @@ import { TasksContext } from '../contexts/TasksContext'
 import { useCountTasks } from '../hooks/useCountTasks'
 
 import { TaskList } from '../components/TaskList'
+import { NewTaskForm } from '../components/NewTaskForm'
 
 import { ClipboardText } from 'phosphor-react'
 import Logo from '../assets/logo.svg'
-import { NewTaskForm } from '../components/NewTaskForm'
 
 export function Home() {
   const tasks = useContextSelector(TasksContext, (context) => {
@@ -23,7 +23,7 @@ export function Home() {
         <img src={Logo} alt="" width={126} height={48} />
       </header>
 
-      <main className="flex flex-col w-full max-w-[752px] mx-auto -mt-[27px] px-4">
+      <main className="flex flex-col w-full max-w-[752px] mx-auto -mt-[27px] px-4 pb-16">
         <NewTaskForm />
 
         <div className="flex flex-col mt-16">
@@ -32,7 +32,7 @@ export function Home() {
               <strong className="text-blue-500 font-bold text-sm">
                 Tarefas criadas
               </strong>
-              <span className="bg-gray-400 px-2 rounded-full text-xs font-bold py-[2px]">
+              <span className="bg-gray-400 px-2 rounded-full text-xs font-bold py-[2px] leading-none">
                 {countTasks.total}
               </span>
             </div>
@@ -41,8 +41,10 @@ export function Home() {
               <strong className="text-purple-500 font-bold text-sm">
                 Concluídas
               </strong>
-              <span className="bg-gray-400 px-2 rounded-full text-xs font-bold py-[2px]">
-                {countTasks.completedtasktotal} de {countTasks.total}
+              <span className="bg-gray-400 px-2 rounded-full text-xs font-bold py-[2px]  leading-none">
+                {hasTask
+                  ? `${countTasks.completedtasktotal} de ${countTasks.total}`
+                  : 0}
               </span>
             </div>
           </div>
