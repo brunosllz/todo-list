@@ -17,7 +17,7 @@
 
 ## [](https://github.com/brunosllz/todo-list#--sobre-o-projeto) 💻 Sobre o projeto
 
-Projeto desenvolvido na NLW Esport [Rockeseat](https://www.rocketseat.com.br/), tem que como objetivo disponizar um espaço que você posso encontrar aquele "Duozinho" para os seus jogos preferidos
+Projeto desenvolvido no Primeiro desafio da trilha de ReactJS no Ignite da [Rocketseat](https://www.rocketseat.com.br/), o projeto tem como premissa reforça os conceitos basicos do React como estados, imutabilidade do estado, listas e chaves no ReactJS, propriedades e componentização.
 
 ---
 
@@ -26,6 +26,7 @@ Projeto desenvolvido na NLW Esport [Rockeseat](https://www.rocketseat.com.br/), 
 - Cadastrar tarefa
 - Deletar tarefa
 - Marcar tarefa como concluída
+- Mostrar o processo de conclusão das tarefas
 
 ---
 
@@ -44,7 +45,9 @@ $ npm run dev ou yarn dev
 
 ## [](https://github.com/brunosllz/todo-list#--layout) 🔖 Layout
 
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/community/file/1150897317533332617). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
+ Aqui você pode visualizar um pouco do layout e funcionalidades da aplicação.
+ 
+ ![gif](https://github.com/brunosllz/todo-list/blob/main/src/assets/app.gif)
 
 ---
 
@@ -54,7 +57,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - Vite
 - Typescript
-- TaildwildCss
+- TailwildCss
 - React Hook Form
 - Radix
 
